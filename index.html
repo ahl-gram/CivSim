@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Civilizations Through Time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<script>
+/* earliest possible error capture (surfaces in document.title for verification) */
+window.__errs = [];
+window.addEventListener('error', function (e) { window.__errs.push((e.message || e.error) + ' @ ' + (e.filename || '') + ':' + (e.lineno || '')); document.title = 'JSERR: ' + window.__errs[0]; });
+window.addEventListener('unhandledrejection', function (e) { window.__errs.push('PROMISE: ' + (e.reason && e.reason.message || e.reason)); document.title = 'JSERR: ' + window.__errs[0]; });
+</script>
+
+<div id="app">
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <div id="title">CIVILIZATIONS THROUGH TIME</div>
+    <div class="spacer"></div>
+    <div id="year-big">40,000 BC</div>
+    <div class="spacer"></div>
+    <div id="era-tag">STONE AGE</div>
+    <div id="pop">POP 1M</div>
+  </div>
+
+  <div id="alt-banner">** ALTERNATE TIMELINE ACTIVE **</div>
+
+  <!-- MAIN: MAP + SIDE -->
+  <div id="main">
+    <div id="map-area">
+      <canvas id="map-canvas"></canvas>
+      <canvas id="fx-canvas"></canvas>
+      <div id="era-banner"></div>
+      <div id="info-popup"></div>
+    </div>
+
+    <div id="side">
+      <div class="side-sec">
+        <h3>CURRENT DATE</h3>
+        <div id="date-big">40,000 BC</div>
+        <div id="era-sub">STONE AGE</div>
+      </div>
+      <div class="side-sec" style="flex:1; display:flex; flex-direction:column; min-height:0;">
+        <h3>ACTIVE CIVILIZATIONS</h3>
+        <div id="civ-scroll"><div id="civ-list"></div></div>
+      </div>
+      <div class="side-sec" style="flex:1; display:flex; flex-direction:column; min-height:0;">
+        <h3>RECENT EVENTS</h3>
+        <div id="event-scroll"><div id="event-list"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div id="ticker-wrap"><span id="ticker-track"></span></div>
+
+  <!-- CONTROLS -->
+  <div id="controls">
+    <div class="ctl-row">
+      <button id="btn-play">&gt; PLAY</button>
+      <span class="ctl-label">SPEED:</span>
+      <button class="speed-btn" data-i="0">0.5x</button>
+      <button class="speed-btn" data-i="1">1x</button>
+      <button class="speed-btn" data-i="2">2x</button>
+      <button class="speed-btn" data-i="3">5x</button>
+      <button class="speed-btn" data-i="4">10x</button>
+      <button class="speed-btn" data-i="5">50x</button>
+      <button class="speed-btn" data-i="6">200x</button>
+      <span class="ctl-label" style="margin-left:8px;">JUMP:</span>
+      <input id="jump-input" type="text" placeholder="e.g. 1492 or 500 BC">
+      <button id="jump-go">GO</button>
+    </div>
+
+    <div class="ctl-row">
+      <span class="ctl-label">FILTERS:</span>
+      <button class="filter-btn" data-type="WAR">WAR</button>
+      <button class="filter-btn" data-type="DISCOVERY">DISC</button>
+      <button class="filter-btn" data-type="COLLAPSE">FALL</button>
+      <button class="filter-btn" data-type="FOUNDING">RISE</button>
+      <button class="filter-btn" data-type="CULTURAL">CULT</button>
+      <button class="filter-btn" data-type="SCIENTIFIC">SCI</button>
+      <button class="filter-btn" data-type="TRADE">TRADE</button>
+      <button class="filter-btn" data-type="DISASTER">DOOM</button>
+    </div>
+
+    <div class="ctl-row">
+      <button id="btn-grid">GRID</button>
+      <button id="btn-trade">TRADE RTS</button>
+      <button id="btn-scan" class="on">SCANLINES</button>
+      <button id="btn-mute" class="on">SOUND</button>
+      <button id="btn-capture">[*] CAPTURE</button>
+      <button id="btn-random">[+] NEW SEED</button>
+      <span id="seed-label">SEED ----</span>
+      <button id="btn-alt">ALT HISTORY: OFF</button>
+    </div>
+
+    <div id="alt-controls">
+      <div class="ctl-row">
+        <span class="ctl-label">SCENARIO:</span>
+        <select id="alt-scenario"></select>
+        <span id="alt-summary"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SPLASH / BOOT -->
+<div id="splash">
+  <div id="splash-inner">
+    <div id="splash-text"></div>
+    <span id="splash-cursor"></span>
+  </div>
+</div>
+
+<!-- scripts in dependency order (classic scripts so file:// double-click works) -->
+<script src="js/core.js"></script>
+<script src="js/rng.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/data-civs.js"></script>
+<script src="js/data-eras.js"></script>
+<script src="js/data-events.js"></script>
+<script src="js/data-events-extra.js"></script>
+<script src="js/data-trade.js"></script>
+<script src="js/data-flavor.js"></script>
+<script src="js/data-althistory.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/althistory.js"></script>
+<script src="js/procedural.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

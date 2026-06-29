@@ -1,0 +1,5 @@
+# personal / machine files (backed up separately via claude-config)
+.DS_Store
+.claude/settings.local.json
+SESSION-NOTES.md
+RESUME-HERE.md
